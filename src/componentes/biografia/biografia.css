@@ -1,0 +1,20 @@
+/* biografia.css */
+
+.username {
+    font-size: 3em;
+    font-weight: bold;
+    color: #100505;
+    text-align: left;
+}
+
+.description {
+    font-size: 1.2em;
+    color: #100505;
+    text-align: left;
+}
+
+.website {
+    font-size: 1.2em;
+    color: #2a1fd0;
+    text-align: left;
+}
