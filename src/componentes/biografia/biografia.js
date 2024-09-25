@@ -5,8 +5,13 @@ import React, { useEffect, useState } from 'react';
 const Biografia = () => {
 
   const [image, setImage] = useState(null);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+
+
   useEffect(() => {
-  const fetchImage = async () => {
+    const fetchImage = async () => {
       const response = await fetch('https://picsum.photos/350'); // Reemplaza con tu URL de la API
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -14,15 +19,54 @@ const Biografia = () => {
       const blob = await response.blob();
       const imageUrl = URL.createObjectURL(blob);
       setImage(imageUrl);
-  };fetchImage();
-}, []);
+    };
+
+    fetchImage();
+
+    const fetchImage1 = async () => {
+      const response = await fetch('https://picsum.photos/350'); // Reemplaza con tu URL de la API
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      setImage1(imageUrl);
+    };
+
+    fetchImage1();
+
+    const fetchImage2 = async () => {
+      const response = await fetch('https://picsum.photos/350'); // Reemplaza con tu URL de la API
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      setImage2(imageUrl);
+    };
+
+    fetchImage2();
+
+    const fetchImage3 = async () => {
+      const response = await fetch('https://picsum.photos/350'); // Reemplaza con tu URL de la API
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      setImage3(imageUrl);
+    };
+
+    fetchImage3();
+  }, []);
+
   return (
     <div className="container">
       <div className="row">
-        <div className="col align-items-start" id = "user_image">
-        {image && <img src={image} alt="Fetched from API" id="imagen_usuario"/>}
+        <div className="col align-items-start" id="user_image">
+          {image && <img src={image} alt="Fetched from API" id="imagen_usuario" />}
         </div>
-        <div className="col align-items-center" style={{ height: "100vh" }}  id = "user_info">
+        <div className="col align-items-center" id="user_info">
           <div className="col text-center">
             <div className="row align-items-start">
               <h1 className="username">username</h1>
@@ -51,6 +95,17 @@ const Biografia = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="col">
+        <div className="row">
+          <div className="col">
+            {image1 && <img src={image1} alt="Fetched from API" id="img1" />}
+          
+            {image2 && <img src={image2} alt="Fetched from API" id="img2" />}
+         
+            {image3 && <img src={image3} alt="Fetched from API" id="img3" />}
           </div>
         </div>
       </div>

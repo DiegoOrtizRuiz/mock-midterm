@@ -21,14 +21,10 @@
 
 #imagen_usuario{
     border-radius: 100%;
+    width: 40%;
 }
 
 
-#user_imagen{
-    width:25%;
-}
-
-
-#user_info{
-    width:75%;
-}
+img {
+    margin-right: 20px; /* Adjust the value to control spacing */
+  }
