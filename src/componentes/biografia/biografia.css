@@ -18,3 +18,17 @@
     color: #2a1fd0;
     text-align: left;
 }
+
+#imagen_usuario{
+    border-radius: 100%;
+}
+
+
+#user_imagen{
+    width:25%;
+}
+
+
+#user_info{
+    width:75%;
+}
