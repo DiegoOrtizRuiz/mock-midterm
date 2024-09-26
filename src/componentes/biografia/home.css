@@ -10,3 +10,21 @@
     text-align: center; 
     padding: 20px;
 }
+
+.card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px; 
+    color: white; 
+}
+
+.card-body {
+    background-color: rgba(0, 0, 0, 0.5); 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+}
