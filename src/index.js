@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Biografia from './componentes/biografia/biografia';
+import Login from './componentes/biografia/login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Biografia />
+    <App />
   </React.StrictMode>
 );
 
