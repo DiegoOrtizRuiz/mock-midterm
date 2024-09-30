@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button } from "react-bootstrap"; // Importar componentes de Bootstrap
+
 
 const Home = () => {
   const sessions = Array.from({ length: 10 }, (_, i) => `Session ${i + 1}`);
   const [cardsData, setCardsData] = useState([]);
   const [profileData, setProfileData] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null); // Estado para card seleccionada
+  const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
+  // Componente Card para mostrar cada tarjeta
+  const CardComponent = ({ card }) => (
+    <div className="card">
+      <p>{card.place}</p>
+      <p>{card.km} km</p>
+      <p>{card.time} h</p>
+    </div>
+  );
+
+
 
   // Fetch data from the API
   useEffect(() => {
     const fetchCardData = async () => {
       try {
         const response = await fetch(
-          "https://my.api.mockaroo.com/card.json?key=7350e8b0"
+          "https://my.api.mockaroo.com/profile.json?key=6cdc8790"
         );
         const data = await response.json();
         setCardsData(Array(10).fill(data));
@@ -21,23 +35,29 @@ const Home = () => {
       }
     };
 
-    const fetchPrfileData = async () => {
+    const fetchProfileData = async () => {
       try {
         const response = await fetch(
-          "https://my.api.mockaroo.com/profile.json?key=7350e8b0"
+          "https://my.api.mockaroo.com/profile2.json?key=6cdc8790"
         );
         const data = await response.json();
         setProfileData(data);
       } catch (error) {
-        console.error("Error fetching card data:", error);
+        console.error("Error fetching profile data:", error);
       }
-
-      console.log("profileData", profileData);
     };
 
     fetchCardData();
-    fetchPrfileData();
-  }, [profileData]);
+    fetchProfileData();
+  }, []); // Eliminamos profileData de las dependencias
+
+  const handleCardClick = (index) => {
+    setSelectedCard(cardsData[0][index]); // Selecciona los detalles de la tarjeta correcta
+    setShowModal(true); // Muestra el modal
+  };
+
+
+  const handleCloseModal = () => setShowModal(false);
 
   const splitFullName = (fullName) => {
     if (!fullName) return { firstName: "", lastName: "" }; // Handle undefined or null
@@ -59,6 +79,7 @@ const Home = () => {
                   style={{
                     backgroundImage: `url(${"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ77cwA4ohMD_vZCfuMbkqYf0nUqcBN8QilQA&s"})`,
                   }}
+                  onClick={() => handleCardClick(index)}
                 >
                   <div className="card-body">
                     <h5 className="card-title">Cycling session</h5>
@@ -150,6 +171,23 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* Modal para mostrar detalles de la card */}
+      {selectedCard && (
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Detalles de la sesión</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <CardComponent card={selectedCard} /> {/* Reutilizas la tarjeta */}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+
 
       {/* Horizontal Bar Content */}
       {profileData ? (
