@@ -1,8 +1,13 @@
 .home-container {
     display: flex;
-    justify-content: space-around; 
-    align-items: start; 
-    height: 100vh; 
+    flex-direction: row;
+    justify-content: space-around; /* Adjust this if you want space between sections */
+    align-items: stretch; /* Ensures the sections take up full width */
+    height: 100%; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    padding: 0; /* No padding to make sure it covers the whole screen */
+    margin: 0; /* No margin to prevent any gaps */
+    box-sizing: border-box; /* Ensures padding and borders are included in the size */
 }
 
 .section {
@@ -12,24 +17,78 @@
 }
 
 .card {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 200px; 
-    color: white; 
+    height: 100%; /* Set the height for uniform card sizes */
+    width: 100%; /* Ensure the card takes up the full width of the column */
+    background-size: cover; /* Ensure the background covers the entire card */
+    background-position: center; /* Center the background image */
+    border-radius: 10px; /* Optional: round the corners */
+    overflow: hidden; /* Optional: to hide overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-body {
-    background-color: rgba(0, 0, 0, 0.5); 
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white; 
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent overlay for better text visibility */
+    color: white; /* Text color on top of the overlay */
+    padding: 20px;
+    text-align: center;
+   }
+
+.card-body .card-title {
+    color: white !important; /* Force the card-title to be white, overriding other styles */
+    font-size: 1rem;
+    text-align: left;
 }
 
 .card-text {
-    font-size: 1.5em; 
+    font-size: 0.9rem;
     color: white;
+    text-align: left;
 }
+
+
+.horizontal-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0a616a;
+    border-radius: 5px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+.user-name {
+    display: flex;
+    flex-direction: column; 
+    text-align: center; 
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.first-name {
+    font-weight: bold; 
+    font-size: 3rem;  
+    color: #fff; 
+}
+
+.last-name {
+    font-weight: bold; 
+    font-size: 3rem; 
+    color: #ffffff; 
+
+}
+.activity {
+    font-size: 2.5rem;
+    margin-right: 20px;
+    color: hsl(0, 0%, 96%);
+    font-weight: bold   ;
+}
+
